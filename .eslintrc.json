@@ -33,7 +33,7 @@
         {
         "extensions": [
           ".tsx"
-        ]
+         ]
         }
       ],
       "no-use-before-define": "off",
