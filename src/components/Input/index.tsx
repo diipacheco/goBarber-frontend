@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
   useCallback,
-  HtmlHTMLAttributes,
 } from 'react';
 import { IconBaseProps } from 'react-icons/lib';
 import { useField } from '@unform/core';
@@ -24,6 +23,10 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
@@ -46,7 +49,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
         defaultValue={defaultValue}
         ref={inputRef}
         {...rest}
-        onFocus={() => setIsFocused(true)}
+        onFocus={handleInputFocus}
         onBlur={handleInputBlur}
       />
     </Container>
